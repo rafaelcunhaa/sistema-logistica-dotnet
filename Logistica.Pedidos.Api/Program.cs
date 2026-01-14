@@ -1,3 +1,5 @@
+using Logistica.Pedidos.Api.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
@@ -35,6 +37,20 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+// Endpoint para criar um novo pedido
+app.MapPost("/pedidos", (PedidoCreateDto dto) => {
+
+    // Criamos um pedido a partir dos dados recebidos
+    var pedido = new Pedido
+    {
+        Cliente = dto.CLiente,
+        ValorTotal = dto.Valor,
+        CriadoEm = DateTime.UtcNow,
+    };
+    // Retornamos status 201 (Created) com o pedido criado
+    return Results.Created($"/pedidos/{pedido.Id}", pedido);
+});
 
 app.Run();
 

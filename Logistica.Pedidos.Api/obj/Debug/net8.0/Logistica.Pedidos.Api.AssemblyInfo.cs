@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Logistica.Pedidos.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04cf595e017af29d838154f852704b97e16e6334")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3873121a506ead0aa88e19da2167ad0dfc125d32")]
 [assembly: System.Reflection.AssemblyProductAttribute("Logistica.Pedidos.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Logistica.Pedidos.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
