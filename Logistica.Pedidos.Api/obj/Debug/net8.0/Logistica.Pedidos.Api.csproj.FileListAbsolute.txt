@@ -6,6 +6,7 @@ C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\Logistica.Pedidos.Api.Assembly
 C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\Logistica.Pedidos.Api.csproj.CoreCompileInputs.cache
 C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\Logistica.Pedidos.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\Logistica.Pedidos.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\Logistica.Pedidos.Api.sourcelink.json
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\appsettings.Development.json
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\appsettings.json
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\Logistica.Pedidos.Api.staticwebassets.endpoints.json
@@ -16,6 +17,7 @@ C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\Logistica.Pedidos.Api.dll
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\Logistica.Pedidos.Api.pdb
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\RabbitMQ.Client.dll
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\projeto\Logistica.Pedidos.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -33,4 +35,3 @@ C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\refint\Logistica.Pedidos.Api.d
 C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\Logistica.Pedidos.Api.pdb
 C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\Logistica.Pedidos.Api.genruntimeconfig.cache
 C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\ref\Logistica.Pedidos.Api.dll
-C:\projeto\Logistica.Pedidos.Api\obj\Debug\net8.0\Logistica.Pedidos.Api.sourcelink.json

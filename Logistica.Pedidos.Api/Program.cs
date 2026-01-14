@@ -1,4 +1,5 @@
 using Logistica.Pedidos.Api.Models;
+using Logistica.Pedidos.Api.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 var summaries = new[]
 {
@@ -44,10 +45,15 @@ app.MapPost("/pedidos", (PedidoCreateDto dto) => {
     // Criamos um pedido a partir dos dados recebidos
     var pedido = new Pedido
     {
-        Cliente = dto.CLiente,
+        Cliente = dto.Cliente,
+        Produto = dto.Produto,
+        Quantidade = dto.Quantidade,
         ValorTotal = dto.Valor,
         CriadoEm = DateTime.UtcNow,
     };
+    // Publicamos a mensagem no RabbitMQ    
+    var publisher = new RabbitMqPublisher();
+    publisher.Publicar("pedidos-criados", pedido);
     // Retornamos status 201 (Created) com o pedido criado
     return Results.Created($"/pedidos/{pedido.Id}", pedido);
 });
