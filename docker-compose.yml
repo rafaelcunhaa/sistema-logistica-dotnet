@@ -1,0 +1,11 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: rabbit-host
+
+    ports:
+      - "5672:5672"   # porta usada pelos apps (C#) para enviar/receber mensagens
+      - "15672:15672" # painel web do RabbitMQ
+
+    restart: unless-stopped
