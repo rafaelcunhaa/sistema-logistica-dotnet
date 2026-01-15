@@ -25,7 +25,7 @@ public class RabbitMqPublisher
         // Declaração da fila (cria a fila se não existir)
         channel.QueueDeclare(
             queue: queue,
-            durable: false,
+            durable: true,
             exclusive: false,
             autoDelete: false,
             arguments: null
