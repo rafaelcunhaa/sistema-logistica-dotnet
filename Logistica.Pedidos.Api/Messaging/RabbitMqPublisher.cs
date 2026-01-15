@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using RabbitMQ.Client;
+using Logistica.Shared;
 
 namespace Logistica.Pedidos.Api.Messaging;
 
@@ -24,7 +25,7 @@ public class RabbitMqPublisher
 
         // Declaração da fila (cria a fila se não existir)
         channel.QueueDeclare(
-            queue: queue,
+            queue: QueueNames.PedidosCriados,
             durable: true,
             exclusive: false,
             autoDelete: false,

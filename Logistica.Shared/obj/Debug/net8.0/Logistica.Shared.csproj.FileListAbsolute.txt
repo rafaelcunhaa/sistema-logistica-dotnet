@@ -1,0 +1,12 @@
+C:\projeto\Logistica.Shared\bin\Debug\net8.0\Logistica.Shared.deps.json
+C:\projeto\Logistica.Shared\bin\Debug\net8.0\Logistica.Shared.dll
+C:\projeto\Logistica.Shared\bin\Debug\net8.0\Logistica.Shared.pdb
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\Logistica.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\Logistica.Shared.AssemblyInfoInputs.cache
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\Logistica.Shared.AssemblyInfo.cs
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\Logistica.Shared.csproj.CoreCompileInputs.cache
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\Logistica.Shared.sourcelink.json
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\Logistica.Shared.dll
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\refint\Logistica.Shared.dll
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\Logistica.Shared.pdb
+C:\projeto\Logistica.Shared\obj\Debug\net8.0\ref\Logistica.Shared.dll

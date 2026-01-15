@@ -2,10 +2,8 @@
 using System.Text.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Logistica.Shared;
 
-
-// Nome da fila que o produtor está usando
-const string QUEUE_NAME = "pedidos-criados";
 
 
 // Configuração para conectar no RabbitMQ (rodando no Docker)
@@ -27,7 +25,7 @@ using var channel = connection.CreateModel();
 
 // Garante que a fila exista (boa prática)
 channel.QueueDeclare(
-    queue: QUEUE_NAME,
+    queue: QueueNames.PedidosCriados,
     durable: true,
     exclusive: false,
     autoDelete: false,
@@ -56,12 +54,12 @@ consumer.Received += (sender, ea) =>
 
 // Começa a consumir a fila
 channel.BasicConsume(
-    queue: QUEUE_NAME,
+    queue: QueueNames.PedidosCriados,
     autoAck: false, // false porque vamos dar ACK manual
     consumer: consumer
 );
 
-Console.WriteLine($"Consumindo mensagens da fila '{QUEUE_NAME}'...");
+Console.WriteLine($"Consumindo mensagens da fila '{QueueNames.PedidosCriados}'...");
 Console.WriteLine("Pressione ENTER para sair.");
 Console.ReadLine();
 

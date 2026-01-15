@@ -25,7 +25,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\projeto\\Logistica.Shared\\Logistica.Shared.csproj": {
+                "projectPath": "C:\\projeto\\Logistica.Shared\\Logistica.Shared.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -49,6 +53,65 @@
               "version": "[6.8.1, )"
             }
           },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.309/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\projeto\\Logistica.Shared\\Logistica.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\projeto\\Logistica.Shared\\Logistica.Shared.csproj",
+        "projectName": "Logistica.Shared",
+        "projectPath": "C:\\projeto\\Logistica.Shared\\Logistica.Shared.csproj",
+        "packagesPath": "C:\\Users\\Galvano novo\\.nuget\\packages\\",
+        "outputPath": "C:\\projeto\\Logistica.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Galvano novo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",

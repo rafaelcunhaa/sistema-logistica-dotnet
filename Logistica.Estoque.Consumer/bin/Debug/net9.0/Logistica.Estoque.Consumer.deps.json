@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v9.0": {
       "Logistica.Estoque.Consumer/1.0.0": {
         "dependencies": {
+          "Logistica.Shared": "1.0.0",
           "RabbitMQ.Client": "6.8.1"
         },
         "runtime": {
@@ -27,7 +28,15 @@
         }
       },
       "System.Memory/4.5.5": {},
-      "System.Threading.Channels/7.0.0": {}
+      "System.Threading.Channels/7.0.0": {},
+      "Logistica.Shared/1.0.0": {
+        "runtime": {
+          "Logistica.Shared.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -56,6 +65,11 @@
       "sha512": "sha512-qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
       "path": "system.threading.channels/7.0.0",
       "hashPath": "system.threading.channels.7.0.0.nupkg.sha512"
+    },
+    "Logistica.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
