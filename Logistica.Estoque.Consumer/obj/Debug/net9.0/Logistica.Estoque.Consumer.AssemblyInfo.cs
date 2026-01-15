@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Logistica.Estoque.Consumer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5939db09a40bac75bd5c675632136911fbfc161")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb23a24c0de8f941ae5d67f6346c558d62e1c33b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Logistica.Estoque.Consumer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Logistica.Estoque.Consumer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
