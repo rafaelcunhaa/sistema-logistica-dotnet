@@ -1,6 +1,8 @@
 using Logistica.Pedidos.Api.Models;
 using Logistica.Pedidos.Api.Messaging;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
@@ -53,7 +55,7 @@ app.MapPost("/pedidos", (PedidoCreateDto dto) => {
     };
     // Publicamos a mensagem no RabbitMQ    
     var publisher = new RabbitMqPublisher();
-    publisher.Publicar("pedidos-criados", pedido);
+    publisher.Publicar(QueueNames.PedidosCriados, pedido);
     // Retornamos status 201 (Created) com o pedido criado
     return Results.Created($"/pedidos/{pedido.Id}", pedido);
 });
