@@ -1,5 +1,7 @@
 using Logistica.Pedidos.Api.Models;
 using Logistica.Pedidos.Api.Messaging;
+using Microsoft.EntityFrameworkCore;
+using Logistica.Pedidos.Api.Data;
 
 
 
@@ -8,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -42,10 +47,10 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast");
 
 // Endpoint para criar um novo pedido
-app.MapPost("/pedidos", (PedidoCreateDto dto) => {
+app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db) => {
 
     // Criamos um pedido a partir dos dados recebidos
-    var pedido = new Pedido
+    var pedido = new Pedido 
     {
         Cliente = dto.Cliente,
         Produto = dto.Produto,
@@ -53,6 +58,9 @@ app.MapPost("/pedidos", (PedidoCreateDto dto) => {
         ValorTotal = dto.Valor,
         CriadoEm = DateTime.UtcNow,
     };
+
+    db.Pedidos.Add(pedido);
+    await db.SaveChangesAsync();
     // Publicamos a mensagem no RabbitMQ    
     var publisher = new RabbitMqPublisher();
     publisher.Publicar(QueueNames.PedidosCriados, pedido);
