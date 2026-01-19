@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Logistica.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0c3a8ee8ddea5e00cc94ab923e2b16e9790606d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+efcfbefe7e856c26db3ad2c747ebc3ea7c009050")]
 [assembly: System.Reflection.AssemblyProductAttribute("Logistica.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Logistica.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

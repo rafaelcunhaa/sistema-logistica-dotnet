@@ -1,25 +1,18 @@
-# .NET
-bin/
-obj/
+# .NET build artifacts
+**/bin/
+**/obj/
 
-# Visual Studio
+# Visual Studio / Rider / VSCode
 .vs/
-*.user
-*.suo
-
-# Rider / VSCode
 .idea/
 .vscode/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
+# User / cache
+*.user
+*.suo
+*.cache
 *.log
 
-# Docker
-**/docker-compose.override.yml
-
-# EF
-*.db
+# OS
+Thumbs.db
+.DS_Store
