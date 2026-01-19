@@ -2,6 +2,7 @@ using Logistica.Pedidos.Api.Models;
 using Logistica.Pedidos.Api.Messaging;
 using Microsoft.EntityFrameworkCore;
 using Logistica.Pedidos.Api.Data;
+using System.Linq;
 
 
 
@@ -66,6 +67,19 @@ app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db) => {
     publisher.Publicar(QueueNames.PedidosCriados, pedido);
     // Retornamos status 201 (Created) com o pedido criado
     return Results.Created($"/pedidos/{pedido.Id}", pedido);
+});
+
+//
+app.MapGet("/pedidos", async (AppDbContext db) =>
+{
+    //
+    var pedidos = await db.Pedidos
+    .AsNoTracking()  //
+    .OrderByDescending(p => p.CriadoEm)  //
+    .ToListAsync();  //
+
+    return Results.Ok(pedidos);
+
 });
 
 app.Run();
