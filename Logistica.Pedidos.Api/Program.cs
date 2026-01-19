@@ -60,11 +60,34 @@ app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db) => {
         CriadoEm = DateTime.UtcNow,
     };
 
+    var erros = new List<string>();
+
+    if (string.IsNullOrWhiteSpace(dto.Cliente))
+        erros.Add("Cliente é obrigatório. ");
+
+    if (string.IsNullOrWhiteSpace(dto.Produto))
+         erros.Add("Produto é obrigatorio");
+
+    if (dto.Quantidade <=0)
+        erros.Add("Quantidade deve ser maior que 0");
+
+    if (dto.Valor <=0)
+        erros.Add("Valor deve ser maior que 0");    
+
+    if (erros.Count > 0)
+        return Results.BadRequest(new { erros });    
+
     db.Pedidos.Add(pedido);
     await db.SaveChangesAsync();
-    // Publicamos a mensagem no RabbitMQ    
-    var publisher = new RabbitMqPublisher();
-    publisher.Publicar(QueueNames.PedidosCriados, pedido);
+
+    try{
+        // Publicamos a mensagem no RabbitMQ    
+        var publisher = new RabbitMqPublisher();
+        publisher.Publicar(QueueNames.PedidosCriados, pedido);
+    }
+    catch (Exception ex) {
+        app.Logger.LogError(ex , "Falha ao publicar o pedido no RabbitMQ. PedidoId={PedidoId}", pedido.Id);
+    }
     // Retornamos status 201 (Created) com o pedido criado
     return Results.Created($"/pedidos/{pedido.Id}", pedido);
 });
@@ -81,6 +104,20 @@ app.MapGet("/pedidos", async (AppDbContext db) =>
     return Results.Ok(pedidos);
 
 });
+
+app.MapGet("pedidos/{id:guid}", async (Guid id, AppDbContext db) =>
+{
+
+    var pedido = await db.Pedidos
+    .AsNoTracking()
+    .FirstOrDefaultAsync(p=> p.Id == id);
+
+    return pedido is null
+    ? Results.NotFound()
+    : Results.Ok(pedido);
+
+});
+
 
 app.Run();
 
