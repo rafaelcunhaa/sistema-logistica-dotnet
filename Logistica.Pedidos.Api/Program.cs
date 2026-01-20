@@ -50,8 +50,10 @@ app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db,PedidoServic
         erros.Add("Valor deve ser maior que 0");    
 
     if (erros.Count > 0)
+    {
+        app.Logger.LogWarning("Requisicao invalida em POST /pedidos. Erros={Erros}", erros);
         return Results.BadRequest(new { erros });    
-
+    }
     // Criamos um pedido a partir dos dados recebidos
     var pedido = await service.CriarAsync(dto);
 

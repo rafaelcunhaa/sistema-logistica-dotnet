@@ -32,15 +32,24 @@ public class PedidoService
         };
         _db.Pedidos.Add(pedido);
         await _db.SaveChangesAsync();
+        _logger.LogInformation(
+         "Pedido salvo no banco. PedidoId={PedidoId} Cliente={Cliente} Produto={Produto} Quantidade={Quantidade} ValorTotal={ValorTotal}",
+         pedido.Id, pedido.Cliente, pedido.Produto, pedido.Quantidade, pedido.ValorTotal);
+
 
         try
         {
             var publisher = new RabbitMqPublisher();
             publisher.Publicar(Logistica.Shared.QueueNames.PedidosCriados, pedido);
+            _logger.LogInformation(
+            "Evento publicado no RabbitMQ. Queue={Queue} PedidoId={PedidoId}",
+            Logistica.Shared.QueueNames.PedidosCriados, pedido.Id);
         }
         catch(Exception ex)
         {
-            _logger.LogError(ex, "Falha ao publicar pedido no RabbitMQ. PedidoId={PedidoId}", pedido.Id);
+            _logger.LogError(ex,
+            "Falha ao publicar evento no RabbitMQ. Queue={Queue} PedidoId={PedidoId}",
+            Logistica.Shared.QueueNames.PedidosCriados, pedido.Id);
         }
 
         return pedido;
