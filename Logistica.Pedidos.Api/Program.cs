@@ -3,21 +3,26 @@ using Logistica.Pedidos.Api.Messaging;
 using Microsoft.EntityFrameworkCore;
 using Logistica.Pedidos.Api.Data;
 using System.Linq;
+using Logistica.Pedidos.Api.Services;
 
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Banco (EF Core)
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Service (regras de negócio de Pedido)
+builder.Services.AddScoped<PedidoService>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// Pipeline (Swagger só em Dev)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -28,17 +33,7 @@ if (app.Environment.IsDevelopment())
 
 
 // Endpoint para criar um novo pedido
-app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db) => {
-
-    // Criamos um pedido a partir dos dados recebidos
-    var pedido = new Pedido 
-    {
-        Cliente = dto.Cliente,
-        Produto = dto.Produto,
-        Quantidade = dto.Quantidade,
-        ValorTotal = dto.Valor,
-        CriadoEm = DateTime.UtcNow,
-    };
+app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db,PedidoService service) => {
 
     var erros = new List<string>();
 
@@ -57,41 +52,26 @@ app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db) => {
     if (erros.Count > 0)
         return Results.BadRequest(new { erros });    
 
-    db.Pedidos.Add(pedido);
-    await db.SaveChangesAsync();
+    // Criamos um pedido a partir dos dados recebidos
+    var pedido = await service.CriarAsync(dto);
 
-    try{
-        // Publicamos a mensagem no RabbitMQ    
-        var publisher = new RabbitMqPublisher();
-        publisher.Publicar(QueueNames.PedidosCriados, pedido);
-    }
-    catch (Exception ex) {
-        app.Logger.LogError(ex , "Falha ao publicar o pedido no RabbitMQ. PedidoId={PedidoId}", pedido.Id);
-    }
     // Retornamos status 201 (Created) com o pedido criado
     return Results.Created($"/pedidos/{pedido.Id}", pedido);
 });
 
 //
-app.MapGet("/pedidos", async (AppDbContext db) =>
+app.MapGet("/pedidos", async (PedidoService service) =>
 {
     //
-    var pedidos = await db.Pedidos
-    .AsNoTracking()  //
-    .OrderByDescending(p => p.CriadoEm)  //
-    .ToListAsync();  //
-
+    var pedidos = await service.ListarAsync();
     return Results.Ok(pedidos);
 
 });
 
-app.MapGet("pedidos/{id:guid}", async (Guid id, AppDbContext db) =>
+app.MapGet("/pedidos/{id:guid}", async (Guid id, PedidoService service) =>
 {
 
-    var pedido = await db.Pedidos
-    .AsNoTracking()
-    .FirstOrDefaultAsync(p=> p.Id == id);
-
+    var pedido = await service.BuscarPorIdAsync(id);
     return pedido is null
     ? Results.NotFound()
     : Results.Ok(pedido);
