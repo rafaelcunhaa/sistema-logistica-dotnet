@@ -20,7 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Service (regras de negócio de Pedido)
-builder.Services.AddScoped<PedidoService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 var app = builder.Build();
 
@@ -35,7 +35,7 @@ if (app.Environment.IsDevelopment())
 
 
 // Endpoint para criar um novo pedido
-app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db,PedidoService service) => {
+app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db,IPedidoService service) => {
 
     var erros = PedidoCrateValidator.Validate(dto);
 
@@ -53,7 +53,7 @@ app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db,PedidoServic
 });
 
 //
-app.MapGet("/pedidos", async (PedidoService service) =>
+app.MapGet("/pedidos", async (IPedidoService service) =>
 {
     //
     var pedidos = await service.ListarAsync();
@@ -61,7 +61,7 @@ app.MapGet("/pedidos", async (PedidoService service) =>
 
 });
 
-app.MapGet("/pedidos/{id:guid}", async (Guid id, PedidoService service) =>
+app.MapGet("/pedidos/{id:guid}", async (Guid id, IPedidoService service) =>
 {
 
     var pedido = await service.BuscarPorIdAsync(id);

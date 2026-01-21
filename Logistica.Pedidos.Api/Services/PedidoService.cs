@@ -8,7 +8,7 @@ namespace Logistica.Pedidos.Api.Services;
 
 
 
-public class PedidoService
+public class PedidoService : IPedidoService
 {
 
     private readonly AppDbContext _db;
