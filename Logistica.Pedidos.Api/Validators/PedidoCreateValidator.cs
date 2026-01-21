@@ -3,7 +3,7 @@ using Logistica.Pedidos.Api.Models;
 namespace Logistica.Pedidos.Api.Validators;
 
 // Validator = responsabilidade única: validar DTO de entrada
-public static class PedidoCrateValidator
+public static class PedidoCreateValidator
 {
     // Retorna a lista de erros. Se vier vazia => dto válido.
     public static List<string> Validate(PedidoCreateDto dto)

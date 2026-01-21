@@ -37,7 +37,7 @@ if (app.Environment.IsDevelopment())
 // Endpoint para criar um novo pedido
 app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db,IPedidoService service) => {
 
-    var erros = PedidoCrateValidator.Validate(dto);
+    var erros = PedidoCreateValidator.Validate(dto);
 
 
     if (erros.Count > 0)
