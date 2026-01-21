@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Logistica.Pedidos.Api.Data;
 using System.Linq;
 using Logistica.Pedidos.Api.Services;
+using Logistica.Pedidos.Api.Validators;
+
 
 
 
@@ -35,19 +37,8 @@ if (app.Environment.IsDevelopment())
 // Endpoint para criar um novo pedido
 app.MapPost("/pedidos", async (PedidoCreateDto dto, AppDbContext db,PedidoService service) => {
 
-    var erros = new List<string>();
+    var erros = PedidoCrateValidator.Validate(dto);
 
-    if (string.IsNullOrWhiteSpace(dto.Cliente))
-        erros.Add("Cliente é obrigatório. ");
-
-    if (string.IsNullOrWhiteSpace(dto.Produto))
-         erros.Add("Produto é obrigatorio");
-
-    if (dto.Quantidade <=0)
-        erros.Add("Quantidade deve ser maior que 0");
-
-    if (dto.Valor <=0)
-        erros.Add("Valor deve ser maior que 0");    
 
     if (erros.Count > 0)
     {
