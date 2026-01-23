@@ -22,6 +22,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Service (regras de negócio de Pedido)
 builder.Services.AddScoped<IPedidoService, PedidoService>();
 
+builder.Services.AddScoped<IMessagePublisher, RabbitMqPublisher>();
+
+
 var app = builder.Build();
 
 // Pipeline (Swagger só em Dev)
