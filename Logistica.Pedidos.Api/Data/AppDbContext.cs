@@ -15,9 +15,12 @@ public class AppDbContext : DbContext
     //
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+    // Evita truncamento: define precisão do decimal no SQL Server
      modelBuilder.Entity<Pedido>()
             .Property(p => p.ValorTotal)
            .HasColumnType("decimal(18,2)");
+
+     base.OnModelCreating(modelBuilder);
     }
 
 }

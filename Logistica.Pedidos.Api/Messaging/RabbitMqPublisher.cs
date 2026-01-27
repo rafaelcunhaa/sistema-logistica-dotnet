@@ -6,7 +6,7 @@ using Logistica.Shared;
 namespace Logistica.Pedidos.Api.Messaging;
 
 // Classe responsável por publicar mensagens no RabbitMQ
-public class RabbitMqPublisher
+public class RabbitMqPublisher : IMessagePublisher
 {
     public void Publicar<T>(string queue, T mensagem)
     {

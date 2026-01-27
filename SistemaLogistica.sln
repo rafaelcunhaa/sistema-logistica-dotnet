@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistica.Estoque.Consumer"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistica.Shared", "Logistica.Shared\Logistica.Shared.csproj", "{E3A25B2E-1D72-4211-9CFE-DEBFB807DA1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistica.Pedidos.Tests", "Logistica.Pedidos.Tests\Logistica.Pedidos.Tests.csproj", "{9853281C-06EA-4D03-8A8A-19F4C475C4D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{E3A25B2E-1D72-4211-9CFE-DEBFB807DA1F}.Release|x64.Build.0 = Release|Any CPU
 		{E3A25B2E-1D72-4211-9CFE-DEBFB807DA1F}.Release|x86.ActiveCfg = Release|Any CPU
 		{E3A25B2E-1D72-4211-9CFE-DEBFB807DA1F}.Release|x86.Build.0 = Release|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Debug|x64.Build.0 = Debug|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Debug|x86.Build.0 = Debug|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Release|x64.ActiveCfg = Release|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Release|x64.Build.0 = Release|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Release|x86.ActiveCfg = Release|Any CPU
+		{9853281C-06EA-4D03-8A8A-19F4C475C4D5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
