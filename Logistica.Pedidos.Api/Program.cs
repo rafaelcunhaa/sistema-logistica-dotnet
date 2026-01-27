@@ -80,6 +80,18 @@ app.MapGet("/pedidos/{id:guid}", async (Guid id, IPedidoService service) =>
 });
 
 
+// Health chack simples
+
+app.MapGet("/health", () =>
+{
+    return Results.Ok(new 
+    {
+        status = "ok",
+        timestamp = DateTime.UtcNow
+    });
+}
+);
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
