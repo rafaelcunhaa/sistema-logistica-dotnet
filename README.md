@@ -107,6 +107,23 @@ curl -X POST http://localhost:5000/pedidos \
   }'
 ```
 
+## 🩺 Health Check
+
+A API possui um endpoint de health check para verificação de status da aplicação.
+
+### Endpoint
+
+`GET /health`
+
+### Exemplo de resposta
+
+```json
+{
+  "status": "ok",
+  "timestamp": "2026-01-23T23:45:12Z"
+}
+```
+
 ## RabbitMQ Management
 
 O painel do RabbitMQ fica disponível em:
